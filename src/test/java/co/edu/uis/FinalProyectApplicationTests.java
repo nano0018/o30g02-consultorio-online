@@ -1,10 +1,10 @@
-package co.edu.uis.o30g02consultorioonline;
+package co.edu.uis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class O30g02ConsultorioOnlineApplicationTests {
+class FinalProyectApplicationTests {
 
 	@Test
 	void contextLoads() {

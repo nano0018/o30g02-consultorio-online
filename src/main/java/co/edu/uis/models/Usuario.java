@@ -1,21 +1,43 @@
-package co.edu.uis.o30g02consultorioonline.models;
+package co.edu.uis.models;
 
+import java.security.Timestamp;
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+@Entity
+@Table(name="user")
 public class Usuario {
+	
+	@Id
+	@Column(name="userid")
 	private int userId;
+	@Column(name="username")
 	private String userName;
+	@Column(name="userlastname")
 	private String userLastName;
+	@Column(name="email")
 	private String email;
-	private String pasword;
-	private String create_time;
+	@Column(name="password")
+	private String password;
+	@Column(name="create_time", updatable=false)
+	@CreationTimestamp
+	private Date create_time;
+	@Column(name="usernum")
 	private String userNum;
-	public Usuario(int userId, String userName, String userLastName, String email, String pasword, String create_time,
+	public Usuario(int userId, String userName, String userLastName, String email, String password, Date create_time,
 			String userNum) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userLastName = userLastName;
 		this.email = email;
-		this.pasword = pasword;
+		this.password = password;
 		this.create_time = create_time;
 		this.userNum = userNum;
 	}
@@ -46,16 +68,16 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPasword() {
-		return pasword;
+	public String getPassword() {
+		return password;
 	}
-	public void setPasword(String pasword) {
-		this.pasword = pasword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(String create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
 	public String getUserNum() {
@@ -67,7 +89,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [userId=" + userId + ", userName=" + userName + ", userLastName=" + userLastName + ", email="
-				+ email + ", pasword=" + pasword + ", create_time=" + create_time + ", userNum=" + userNum + "]";
+				+ email + ", pasword=" + password + ", create_time=" + create_time + ", userNum=" + userNum + "]";
 	}
 	
 	

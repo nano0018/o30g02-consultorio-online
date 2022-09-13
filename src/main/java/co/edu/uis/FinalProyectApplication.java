@@ -1,13 +1,13 @@
-package co.edu.uis.o30g02consultorioonline;
+package co.edu.uis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class O30g02ConsultorioOnlineApplication {
+public class FinalProyectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(O30g02ConsultorioOnlineApplication.class, args);
+		SpringApplication.run(FinalProyectApplication.class, args);
 	}
 
 }
