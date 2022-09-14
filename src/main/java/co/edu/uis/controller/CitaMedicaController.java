@@ -1,4 +1,4 @@
-package co.edu.uis.o30g02consultorioonline.controller;
+package co.edu.uis.controller;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import co.edu.uis.o30g02consultorioonline.models.CitaMedica;
-import co.edu.uis.o30g02consultorioonline.models.FormulaMedica;
-import co.edu.uis.o30g02consultorioonline.repository.CitaMedicaRepository;
-import co.edu.uis.o30g02consultorioonline.repository.FormulaMedicaRepository;
+import co.edu.uis.models.CitaMedica;
+import co.edu.uis.models.FormulaMedica;
+import co.edu.uis.repository.CitaMedicaRepository;
+import co.edu.uis.repository.FormulaMedicaRepository;
 
 @Controller
 @RequestMapping("/cita_medica")
@@ -24,7 +24,7 @@ public class CitaMedicaController {
 	@Autowired
 	private FormulaMedicaRepository fmRepository;
 	
-	@GetMapping("home")
+	@GetMapping("test_home")
 	public String home(Model md) {
 		md.addAttribute("medical_appointments", cmRepository.findAll());
 		return "test_citas_medicas";

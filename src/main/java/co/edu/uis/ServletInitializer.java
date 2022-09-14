@@ -1,4 +1,4 @@
-package co.edu.uis.o30g02consultorioonline;
+package co.edu.uis;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

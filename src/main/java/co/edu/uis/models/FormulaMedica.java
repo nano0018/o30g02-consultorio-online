@@ -1,4 +1,4 @@
-package co.edu.uis.o30g02consultorioonline.models;
+package co.edu.uis.models;
 
 
 import java.util.Date;

@@ -1,8 +1,8 @@
-package co.edu.uis.o30g02consultorioonline.repository;
+package co.edu.uis.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import co.edu.uis.o30g02consultorioonline.models.FormulaMedica;
+import co.edu.uis.models.FormulaMedica;
 
 public interface FormulaMedicaRepository extends JpaRepository<FormulaMedica, Integer>{
 
