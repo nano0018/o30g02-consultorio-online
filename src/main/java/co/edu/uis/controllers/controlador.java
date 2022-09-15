@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.uis.interfaceService.IuserService;
+
 import co.edu.uis.models.Usuario;
+
 
 @Controller
 @RequestMapping
@@ -23,17 +25,18 @@ public class controlador {
 	@Autowired
 	private IuserService service;
 	
+	
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		List<Usuario>usuarios = service.listar();
 		model.addAttribute("usuarios", usuarios);
-		return "userTable";
+		return "GestionUsuarios";
 	}
 	
 	@GetMapping("/new")
 	public String agregar(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "register";
+		return "GestionUsuariosInputs";
 	}
 	
 	@PostMapping("/save")
@@ -46,7 +49,7 @@ public class controlador {
 	public String editar(@PathVariable int id, Model model) {
 		Optional<Usuario>usuario=service.listarId(id);
 		model.addAttribute("usuario", usuario);
-		return "register";
+		return "GestionUsuariosInputs";
 	}
 	
 	@GetMapping("/eliminar/{id}")
