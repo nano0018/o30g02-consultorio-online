@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uis.dto.CitaMedicDto;
+import co.edu.uis.interfaceService.ICitaMedicaService;
 import co.edu.uis.models.CitaMedica;
 import co.edu.uis.repository.CitaMedicaRepository;
 
 @Service
-public class CitaMedicaServiceImpl implements CitaMedicaService{
+public class CitaMedicaServiceImpl implements ICitaMedicaService{
 	
 	@Autowired
 	private CitaMedicaRepository cmRepository;

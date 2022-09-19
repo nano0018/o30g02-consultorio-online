@@ -1,4 +1,4 @@
-package co.edu.uis.controller;
+package co.edu.uis.controllers;
 
 import java.util.List;
 
