@@ -25,6 +25,7 @@ import co.edu.uis.dto.CitaMedicDto;
 							@ColumnResult(name = "nombreMedico", type = String.class),
 							@ColumnResult(name = "especialidad", type = String.class),
 							@ColumnResult(name = "fechaCita", type = Date.class),
+							@ColumnResult(name = "observaciones", type = String.class),
 					}
 				)
 			}
@@ -38,7 +39,8 @@ import co.edu.uis.dto.CitaMedicDto;
 				+ "concat(user.username, ' ', user.userLastName) as 'nombrePaciente', "
 				+ "concat(workers.workerName, ' ', workers.workerLastName) as 'nombreMedico', "
 				+ "doctors.area as 'especialidad' , "
-				+ "medical_appointment.medical_appointment_date as fechaCita "
+				+ "medical_appointment.medical_appointment_date as fechaCita, "
+				+ "medical_appointment.observations as observaciones "
 				+ "from medical_appointment "
 				+ "inner join user on user.userId = medical_appointment.user_userId "
 				+ "inner join doctors on doctors.idDoctor = medical_appointment.doctors_idDoctor "
@@ -46,14 +48,15 @@ import co.edu.uis.dto.CitaMedicDto;
 		)
 
 @NamedNativeQuery(
-		name = "CitaMedica.listarCitasMedicasbyId",
+		name = "CitaMedica.listarCitasMedicasbyUserId",
 		resultClass = CitaMedicDto.class,
 		resultSetMapping = "listarCitasMedicasMapping",
 		query = ("select medical_appointment.idmedical_appointment, "
 				+ "concat(user.username, ' ', user.userLastName) as 'nombrePaciente', "
 				+ "concat(workers.workerName, ' ', workers.workerLastName) as 'nombreMedico', "
 				+ "doctors.area as 'especialidad' , "
-				+ "medical_appointment.medical_appointment_date as fechaCita "
+				+ "medical_appointment.medical_appointment_date as fechaCita, "
+				+ "medical_appointment.observations as observaciones "
 				+ "from medical_appointment "
 				+ "inner join user on user.userId = medical_appointment.user_userId "
 				+ "inner join doctors on doctors.idDoctor = medical_appointment.doctors_idDoctor "
@@ -76,23 +79,24 @@ public class CitaMedica {
 	@Column(name="doctors_idDoctor")
 	private int doctors_idDoctor;
 	
-	@Column(name="medicalFormula_idmedicalFormula")
-	private int medicalFormula_idmedicalFormula;
-	
-	@Column(name="observations")
+	@Column(name="observations", nullable = true)
 	private String observations;
 	
+	@Column(name="medical_appointment_date")
+	private Date medical_appointment_date;
+			
 	public CitaMedica() {
 		
 	}
-
-	public CitaMedica(int idmedical_appointment, int user_userId, int doctors_idDoctor,
-			int medicalFormula_idmedicalFormula, String observations) {		
+		
+	public CitaMedica(int idmedical_appointment, int user_userId, int doctors_idDoctor, String observations,
+			Date medical_appointment_date) {
+		super();
 		this.idmedical_appointment = idmedical_appointment;
 		this.user_userId = user_userId;
 		this.doctors_idDoctor = doctors_idDoctor;
-		this.medicalFormula_idmedicalFormula = medicalFormula_idmedicalFormula;
 		this.observations = observations;
+		this.medical_appointment_date = medical_appointment_date;
 	}
 
 	public int getIdmedical_appointment() {
@@ -119,14 +123,6 @@ public class CitaMedica {
 		this.doctors_idDoctor = doctors_idDoctor;
 	}
 
-	public int getMedicalFormula_idmedicalFormula() {
-		return medicalFormula_idmedicalFormula;
-	}
-
-	public void setMedicalFormula_idmedicalFormula(int medicalFormula_idmedicalFormula) {
-		this.medicalFormula_idmedicalFormula = medicalFormula_idmedicalFormula;
-	}
-
 	public String getObservations() {
 		return observations;
 	}
@@ -135,11 +131,19 @@ public class CitaMedica {
 		this.observations = observations;
 	}
 
+	public Date getMedical_appointment_date() {
+		return medical_appointment_date;
+	}
+
+	public void setMedical_appointment_date(Date medical_appointment_date) {
+		this.medical_appointment_date = medical_appointment_date;
+	}
+
 	@Override
 	public String toString() {
 		return "CitaMedica [idmedical_appointment=" + idmedical_appointment + ", user_userId=" + user_userId
-				+ ", doctors_idDoctor=" + doctors_idDoctor + ", medicalFormula_idmedicalFormula="
-				+ medicalFormula_idmedicalFormula + ", observations=" + observations + "]";
+				+ ", doctors_idDoctor=" + doctors_idDoctor + ", observations=" + observations
+				+ ", medical_appointment_date=" + medical_appointment_date + "]";
 	}
 	
 }

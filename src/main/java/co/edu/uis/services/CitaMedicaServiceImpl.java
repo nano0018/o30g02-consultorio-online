@@ -42,9 +42,9 @@ public class CitaMedicaServiceImpl implements CitaMedicaService{
 	}
 
 	@Override
-	public List<CitaMedicDto> listaCitaMedicasById(Integer id) {
+	public List<CitaMedicDto> listarCitasMedicasbyUserId(Integer id) {
 		// TODO Auto-generated method stub
-		return cmRepository.listarCitasMedicasbyId(id);
+		return cmRepository.listarCitasMedicasbyUserId(id);
 	}
 
 	@Override

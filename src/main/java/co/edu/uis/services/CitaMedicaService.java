@@ -12,7 +12,7 @@ public interface CitaMedicaService {
 	public Optional<CitaMedica> findById(Integer id);
 	public CitaMedica save(CitaMedica citaMedica);
 	public void deleteById(Integer id);
-	public List<CitaMedicDto> listaCitaMedicasById(Integer id);
+	public List<CitaMedicDto> listarCitasMedicasbyUserId(Integer id);
 	public List<CitaMedicDto> listaCitaMedicas();
 	
 

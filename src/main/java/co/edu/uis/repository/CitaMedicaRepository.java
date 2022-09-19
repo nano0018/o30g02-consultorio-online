@@ -17,6 +17,6 @@ public interface CitaMedicaRepository extends JpaRepository<CitaMedica, Integer>
 	public List<CitaMedicDto> listarCitasMedicas();
 	
 	@Query(nativeQuery = true)
-	public List<CitaMedicDto> listarCitasMedicasbyId(Integer id);
+	public List<CitaMedicDto> listarCitasMedicasbyUserId(Integer id);
 
 }

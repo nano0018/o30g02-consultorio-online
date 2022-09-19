@@ -1,7 +1,9 @@
 package co.edu.uis.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,14 +17,18 @@ public class CitaMedicDto {
 	private String especialidad;
 	private Date fechaCita;
 	
+	@Column(nullable = true)
+	private String observaciones;
+	
 	public CitaMedicDto(String idmedical_appointment, String nombrePaciente, String nombreMedico, String especialidad,
-			Date fechaCita) {
+			Date fechaCita, String observaciones) {
 		
 		this.idmedical_appointment = Integer.valueOf(idmedical_appointment);
 		this.nombrePaciente = nombrePaciente;
 		this.nombreMedico = nombreMedico;
-		this.especialidad = especialidad;
+		this.especialidad = especialidad;		
 		this.fechaCita = fechaCita;
+		this.observaciones = observaciones;
 	}
 
 	public int getIdmedical_appointment() {
@@ -64,8 +70,20 @@ public class CitaMedicDto {
 	public void setFechaCita(Date fechaCita) {
 		this.fechaCita = fechaCita;
 	}
-	
-	
-	
 
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	@Override
+	public String toString() {
+		return "CitaMedicDto [idmedical_appointment=" + idmedical_appointment + ", nombrePaciente=" + nombrePaciente
+				+ ", nombreMedico=" + nombreMedico + ", especialidad=" + especialidad + ", fechaCita=" + fechaCita
+				+ ", observaciones=" + observaciones + "]";
+	}
+	
 }
