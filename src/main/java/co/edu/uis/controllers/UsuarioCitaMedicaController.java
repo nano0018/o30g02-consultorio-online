@@ -35,14 +35,14 @@ public class UsuarioCitaMedicaController{
 	
 	@GetMapping("")
 	public String gestionHomeUsuario( Model model ) {
-		int id = 1;
+		int id = 9289936;
 		model.addAttribute("citamedica", citaMedicaServiceImpl.listarCitasMedicasbyUserId(id));
 		return "citaMedica/GestionCitaMedicaUsuario";
 	}
 	
 	@GetMapping("/new")
 	public String agregarCita(Model model) {
-		int id = 1;
+		int id = 9289936;
 		Usuario usuarioBD  = usuarioServiceImpl.listarId(id).get();
 		List<DoctorDto> listaMedicos = doctorServiceImpl.listarMedicos();
 		final String nombreCompletoUsuarioBD= usuarioBD.getUserName() + " " + usuarioBD.getUserLastName();		

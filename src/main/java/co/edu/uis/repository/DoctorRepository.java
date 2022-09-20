@@ -16,4 +16,5 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 	
 	@Query(nativeQuery = true)
 	Optional<DoctorDto> listarMedicosById(Integer id);
+
 }

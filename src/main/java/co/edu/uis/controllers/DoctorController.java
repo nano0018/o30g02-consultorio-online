@@ -34,7 +34,7 @@ public class DoctorController {
 	
 	@GetMapping("")
 	public String gestionHomeDoctor(Model model) {
-		int id = 1;
+		int id = 103698852;
 		model.addAttribute("citamedica", citaMedicaServiceImpl.listarCitasMedicasbyDoctorId(id));
 		return "doctor/GestionCitaMedicaDoctor";
 	}
