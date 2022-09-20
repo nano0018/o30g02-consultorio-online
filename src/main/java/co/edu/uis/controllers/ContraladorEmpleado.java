@@ -17,7 +17,7 @@ import co.edu.uis.interfaceService.IempleadoService;
 import co.edu.uis.models.Empleado;
 
 @Controller
-@RequestMapping
+@RequestMapping("/managerEmpleados")
 public class ContraladorEmpleado {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class ContraladorEmpleado {
 	@PostMapping("/saveEmpleado")
 	public String save(@Valid Empleado e, Model model) {
 		service.Save(e);
-		return "redirect:/listarEmpleados";
+		return "redirect:/managerEmpleados/listarEmpleados";
 	}
 	
 	@GetMapping("/editarEmpleado/{id}")
@@ -52,6 +52,6 @@ public class ContraladorEmpleado {
 	@GetMapping("/eliminarEmpleado/{id}")
 	public String delete(Model model, @PathVariable int id) {
 		service.delete(id);
-		return "redirect:/listarEmpleados";
+		return "redirect:/managerEmpleados/listarEmpleados";
 	}
 }

@@ -45,8 +45,8 @@
                         <a href="" class="d-flex align-items-center pb-2 mb-md-0 me-md-auto text-white text-decoration-none">
                             <span class="fs-5 d-none d-sm-inline">Menu</span>
                         </a>
-                        <a href="" class="p-2 fs-5 nav-link px-0 align-middle"><i class="bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar usuarios</span></a>
-                        <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-badge-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar empleados</span></a>
+                        <a th:href="@{/managerUsuarios/listar}" class="p-2 fs-5 nav-link px-0 align-middle"><i class="bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar usuarios</span></a>
+                        <a th:href="@{/managerEmpleados/listarEmpleados}" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-badge-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar empleados</span></a>
                         <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-calendar-week"></i><span class="ms-1 d-none d-sm-inline">Gestionar citas</span></a>
                         <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-lines-fill"></i><span class="ms-1 d-none d-sm-inline">Editar perfil</span></a>
                     </div>
@@ -56,7 +56,7 @@
 					
                     <!-- inicio de tabla -->
 			    <div class="container-md m-5 main-table animate__animated animate__fadeInLeft">
-			    	<a class="btn btn-primary mb-5" th:href="@{/newEmpleado}">Agregar</a>
+			    	<a class="btn btn-primary mb-5" th:href="@{/managerEmpleados/newEmpleado}">Agregar</a>
 			        <table class="table table-striped main-table">
 			          <thead>
 			            <tr>
@@ -81,11 +81,11 @@
 			              <td th:text="${empleado.workerTel}" data-label="Telefono" class="text-black"></td>
 			              <td th:text="${empleado.typeContract}" data-label="tipo de Contrato" class="text-black"></td>
 			              <td class="text-black">
-			                <a th:href="@{/eliminarEmpleado/}+${empleado.idWorkers}" class="btn btn-danger m-2 ">
-			                  Borrar
+			                <a th:href="@{/managerEmpleados/eliminarEmpleado/}+${empleado.idWorkers}" class="btn btn-danger m-2 ">
+			                   <i class="bi bi-trash3-fill"></i>
 			                </a>
-			                <a th:href="@{/editarEmpleado/}+${empleado.idWorkers}" class="btn btn-primary m-2 ">
-			                  Editar</a
+			                <a th:href="@{/managerEmpleados/editarEmpleado/}+${empleado.idWorkers}" class="btn btn-primary m-2 ">
+			                  <i class="bi bi-pencil-square"></i></a
 			                >
 			              </td>
 			            </tr>

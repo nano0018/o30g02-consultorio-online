@@ -46,8 +46,8 @@
                         <a href="" class="d-flex align-items-center pb-2 mb-md-0 me-md-auto text-white text-decoration-none">
                             <span class="fs-5 d-none d-sm-inline">Menu</span>
                         </a>
-                        <a th:href="@{/listar}" class="p-2 fs-5 nav-link px-0 align-middle"><i class="bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline" >Gestionar usuarios</span></a>
-                        <a th:href="@{/listarEmpleados}" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-badge-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar empleados</span></a>
+                        <a th:href="@{/managerUsuarios/listar}" class="p-2 fs-5 nav-link px-0 align-middle"><i class="bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline" >Gestionar usuarios</span></a>
+                        <a th:href="@{/managerEmpleados/listarEmpleados}" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-badge-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar empleados</span></a>
                         <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-calendar-week"></i><span class="ms-1 d-none d-sm-inline">Gestionar citas</span></a>
                         <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-lines-fill"></i><span class="ms-1 d-none d-sm-inline">Editar perfil</span></a>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="d-flex flex-column mt-4 ">
                         
                   
-                        <form class="form-group" th:action="@{/saveEmpleado}" th:object=${empleado} method="post">
+                        <form class="form-group" th:action="@{/managerEmpleados/saveEmpleado}" th:object=${empleado} method="post">
                         
                         	<div class="input-group flex-nowrap mb-3">
 					            <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Documento</span>

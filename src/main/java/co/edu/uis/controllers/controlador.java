@@ -19,7 +19,7 @@ import co.edu.uis.models.Usuario;
 
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("/managerUsuarios")
 public class controlador {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class controlador {
 	@PostMapping("/save")
 	public String save(@Valid Usuario u, Model model) {
 		service.save(u);
-		return "redirect:/listar";
+		return "redirect:/managerUsuarios/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -55,6 +55,6 @@ public class controlador {
 	@GetMapping("/eliminar/{id}")
 	public String delete(Model model, @PathVariable int id) {
 		service.delete(id);
-		return "redirect:/listar";
+		return "redirect:/managerUsuarios/listar";
 	}
 }
