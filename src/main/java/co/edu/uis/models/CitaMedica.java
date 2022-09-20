@@ -13,6 +13,8 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import co.edu.uis.dto.CitaMedicDto;
 
 @SqlResultSetMapping(
@@ -64,6 +66,23 @@ import co.edu.uis.dto.CitaMedicDto;
 				+ "where medical_appointment.user_userId = ?1 ;")
 		)
 
+@NamedNativeQuery(
+		name = "CitaMedica.listarCitasMedicasbyDoctorId",
+		resultClass = CitaMedicDto.class,
+		resultSetMapping = "listarCitasMedicasMapping",
+		query = ("select medical_appointment.idmedical_appointment, "
+				+ "concat(user.username, ' ', user.userLastName) as 'nombrePaciente', "
+				+ "concat(workers.workerName, ' ', workers.workerLastName) as 'nombreMedico', "
+				+ "doctors.area as 'especialidad' , "
+				+ "medical_appointment.medical_appointment_date as fechaCita, "
+				+ "medical_appointment.observations as observaciones "
+				+ "from medical_appointment "
+				+ "inner join user on user.userId = medical_appointment.user_userId "
+				+ "inner join doctors on doctors.idDoctor = medical_appointment.doctors_idDoctor "
+				+ "inner join workers on workers.idworkers = doctors.id_workers "
+				+ "where medical_appointment.doctors_idDoctor = ?1 ;")
+		)
+
 @Entity
 @Table(name="medical_appointment")
 public class CitaMedica {
@@ -83,6 +102,7 @@ public class CitaMedica {
 	private String observations;
 	
 	@Column(name="medical_appointment_date")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date medical_appointment_date;
 			
 	public CitaMedica() {

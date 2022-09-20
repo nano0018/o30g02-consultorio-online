@@ -54,4 +54,10 @@ public class CitaMedicaServiceImpl implements ICitaMedicaService{
 		return cmRepository.listarCitasMedicas();
 	}
 
+	@Override
+	public List<CitaMedicDto> listarCitasMedicasbyDoctorId(Integer id) {
+		// TODO Auto-generated method stub
+		return cmRepository.listarCitasMedicasbyDoctorId(id);
+	}
+
 }

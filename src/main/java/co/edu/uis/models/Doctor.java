@@ -1,22 +1,54 @@
 package co.edu.uis.models;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
+
+import co.edu.uis.dto.DoctorDto;
+
+@SqlResultSetMapping(
+		name= "listarMedicosMapping",
+		classes = {
+				@ConstructorResult(targetClass = DoctorDto.class,
+					columns = {
+							@ColumnResult(name = "idDoctor", type = String.class),
+							@ColumnResult(name = "nombreMedico", type = String.class),
+							@ColumnResult(name = "especialidad", type = String.class),
+					}
+				)
+			}
+		)
+
+@NamedNativeQuery(
+		name = "Doctor.listarMedicos",
+		resultClass = DoctorDto.class,
+		resultSetMapping = "listarMedicosMapping",
+		query = ("select idDoctor, "
+				+ "concat(workers.workerName, ' ', workers.workerLastName) as 'nombreMedico', "
+				+ "doctors.area as 'especialidad' "
+				+ "from doctors "
+				+ "inner join workers on workers.idworkers = doctors.id_workers; ")
+		)
+
+@NamedNativeQuery(
+		name = "Doctor.listarMedicosById",
+		resultClass = DoctorDto.class,
+		resultSetMapping = "listarMedicosMapping",
+		query = ("select idDoctor, "
+				+ "concat(workers.workerName, ' ', workers.workerLastName) as 'nombreMedico', "
+				+ "doctors.area as 'especialidad' "
+				+ "from doctors "
+				+ "inner join workers on workers.idworkers = doctors.id_workers "
+				+ "where idDoctor = ?1 ;")
+		)
+
 
 @Entity
 @Table(name="doctors")

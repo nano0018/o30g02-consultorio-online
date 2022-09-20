@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/home-styles.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         
         
 		<title>Consultorio Online</title>	
@@ -53,30 +54,31 @@
                    <!-- inputs de registros -->
 
                    <div class="d-flex flex-column mt-4 ">                   
-                    <form class="form-group" th:action="@{/cita_medica/save}" th:object=${citamedica} method="post">                    
+                    <form class="form-group" th:action="@{/cita_medica/save}" th:object=${citamedica} method="post">                      
+                      <input type="hidden" id="user_userId" name="user_userId" th:value="${usuario.userId}">                    
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Nombre paciente</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="user_userId" readonly/>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="" th:placeholder="${usuario.userName} + ' ' + ${usuario.userLastName}" disabled/>
                       </div>
+
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Nombre médico</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="doctors_idDoctor"/>
-                      </div> 
+                        <select name="doctors_idDoctor" id="doctors_idDoctor" class="form-control" aria-describedby="addon-wrapping">
+                          <option name="doctors_idDoctor" th:each="listadoMedicos:${listaMedicos}" th:value="${listadoMedicos.idDoctor}" th:text="${listadoMedicos.nombreMedico}" th:field="*{doctors_idDoctor}"></option>
+                        </select>
+                      </div>
+
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Fecha</span>
-                        <input id="startDate" class="form-control" type="date" name="doctors_idDoctor"/>
+                        <input id="startDate" class="form-control" type="date" name="medical_appointment_date" th:field="*{medical_appointment_date}"/>
                       </div>
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Especialidad</span>
-                        <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="doctors_idDoctor"/> -->
-                        <select name="doctors_idDoctor" id="doctors_idDoctor" class="form-control" aria-describedby="addon-wrapping">
-                          <option value="General">General</option>
-                          <option value="Odontología">Odontología</option>
-                        </select>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="" value="General" disabled/>                        
                       </div>
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Observaciones</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="doctors_idDoctor"/>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="observations"  th:field="*{observations}"/>
                       </div>                                                 
                       <div class="d-flex p-5 mt-3 ms-3">
                         <button  type="submit" class=" align-self-center btn btn-success bg-verdeClaro-main ms-5">Agendar <i class="bi bi-calendar2-check"></i></button>
