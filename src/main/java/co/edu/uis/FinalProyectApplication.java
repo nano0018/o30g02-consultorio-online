@@ -1,13 +1,13 @@
-package com.example.demo;
+package co.edu.uis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrudProductoO30Application {
+public class FinalProyectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrudProductoO30Application.class, args);
+		SpringApplication.run(FinalProyectApplication.class, args);
 	}
 
 }
