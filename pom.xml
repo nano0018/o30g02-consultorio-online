@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.edu.uis</groupId>
-	<artifactId>finalProyect</artifactId>
+	<artifactId>CrudProducto-O30</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>finalProyect</name>
+	<name>CrudProducto-O30</name>
 	<description>curd con spring</description>
 	<properties>
 		<java.version>11</java.version>
@@ -46,14 +46,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			  <groupId>javax.validation</groupId>
-			  <artifactId>validation-api</artifactId>
-			  <version>2.0.1.Final</version><!--$NO-MVN-MAN-VER$-->
-	</dependency>
 	</dependencies>
-	
-	
 
 	<build>
 		<plugins>
