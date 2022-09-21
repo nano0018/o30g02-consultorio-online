@@ -1,8 +1,10 @@
 package co.edu.uis.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import co.edu.uis.services.CitaMedicaServiceImpl;
 import co.edu.uis.services.DoctorServiceImpl;
 import co.edu.uis.services.UsuarioService;
 
+@Secured("ROLE_DOCTOR")
 @Controller
 @RequestMapping("/doctor")
 public class DoctorController {
@@ -33,9 +36,11 @@ public class DoctorController {
 	private UsuarioService usuarioServiceImpl;
 	
 	@GetMapping("")
-	public String gestionHomeDoctor(Model model) {
-		int id = 103698852;
+	public String gestionHomeDoctor(Model model, Principal principal) {
+		int idWorker = Integer.valueOf(principal.getName());
+		int id = doctorServiceImpl.MedicoByIdWorker(idWorker);
 		model.addAttribute("citamedica", citaMedicaServiceImpl.listarCitasMedicasbyDoctorId(id));
+		System.out.println(id);
 		return "doctor/GestionCitaMedicaDoctor";
 	}
 	
@@ -47,8 +52,10 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/new")
-	public String agregarCita(Model model) {
-		int id = 1;
+	public String agregarCita(Model model, Principal principal) {
+		int idWorker = Integer.valueOf(principal.getName());
+		int id = doctorServiceImpl.MedicoByIdWorker(idWorker);
+		System.out.println(id);
 		List<Usuario>  listaUsuario  = usuarioServiceImpl.listar();
 		DoctorDto doctor = doctorServiceImpl.listarMedicosById(id).get();
 		System.out.println(doctor.getIdDoctor());
@@ -81,5 +88,12 @@ public class DoctorController {
 	@ResponseBody
 	public List<CitaMedicDto> listarCitasMedicasbyDoctorId(@PathVariable Integer id) {		
 		return citaMedicaServiceImpl.listarCitasMedicasbyDoctorId(id);
+	}
+	
+	@GetMapping("/api/getIdWorker")
+	@ResponseBody
+	public Integer MedicoByIdWorker(Principal principal) {
+		int id = Integer.valueOf(principal.getName());
+		return doctorServiceImpl.MedicoByIdWorker(id);
 	}
 }

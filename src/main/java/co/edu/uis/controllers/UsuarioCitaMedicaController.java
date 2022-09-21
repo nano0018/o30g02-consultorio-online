@@ -1,9 +1,11 @@
 package co.edu.uis.controllers;
 
+import java.security.Principal;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,7 @@ import co.edu.uis.services.CitaMedicaServiceImpl;
 import co.edu.uis.services.DoctorServiceImpl;
 import co.edu.uis.services.UsuarioService;
 
+@Secured("ROLE_USER")
 @Controller
 @RequestMapping("/cita_medica")
 public class UsuarioCitaMedicaController{
@@ -34,15 +37,15 @@ public class UsuarioCitaMedicaController{
 	DoctorServiceImpl doctorServiceImpl;
 	
 	@GetMapping("")
-	public String gestionHomeUsuario( Model model ) {
-		int id = 9289936;
+	public String gestionHomeUsuario( Model model, Principal principal) {
+		int id = Integer.valueOf(principal.getName());
 		model.addAttribute("citamedica", citaMedicaServiceImpl.listarCitasMedicasbyUserId(id));
 		return "citaMedica/GestionCitaMedicaUsuario";
 	}
 	
 	@GetMapping("/new")
-	public String agregarCita(Model model) {
-		int id = 9289936;
+	public String agregarCita(Model model, Principal principal) {		
+		int id = Integer.valueOf(principal.getName());
 		Usuario usuarioBD  = usuarioServiceImpl.listarId(id).get();
 		List<DoctorDto> listaMedicos = doctorServiceImpl.listarMedicos();
 		final String nombreCompletoUsuarioBD= usuarioBD.getUserName() + " " + usuarioBD.getUserLastName();		

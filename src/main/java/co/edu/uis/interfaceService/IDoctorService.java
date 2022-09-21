@@ -14,4 +14,5 @@ public interface IDoctorService {
 	public Doctor save(Doctor doctor);
 	public void deleteById(Integer id);
 	public Optional<DoctorDto> listarMedicosById(Integer id);
+	public Integer MedicoByIdWorker(Integer id);
 }
