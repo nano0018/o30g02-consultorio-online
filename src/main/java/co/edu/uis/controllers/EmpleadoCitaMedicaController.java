@@ -33,7 +33,7 @@ public class EmpleadoCitaMedicaController{
 	private UsuarioService usuarioServiceImpl;
 	
 	@Autowired
-	DoctorServiceImpl doctorServiceImpl;
+	private DoctorServiceImpl doctorServiceImpl;
 		
 	@GetMapping("")
 	public String gestionHome( Model model ) {

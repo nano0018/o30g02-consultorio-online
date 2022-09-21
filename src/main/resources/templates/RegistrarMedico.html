@@ -59,35 +59,22 @@
                    <!-- inputs de registros -->
 
                    <div class="d-flex flex-column mt-4 ">                   
-                    <form class="form-group" th:action="@{/administacion_citas_medicas/save}" th:object=${citamedica} method="post">                                          
+                    <form class="form-group" th:action="@{/managerMedicos/save}" th:object=${medico} method="post">  
+
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Nombre paciente</span>
-                        <select name="user_userId" id="user_userId" class="form-control" aria-describedby="addon-wrapping">
-                          <option name="user_userId" th:each="listaUsuarios:${listaUsuario}" th:value="${listaUsuarios.userId}" th:text="${listaUsuarios.userName} + ' ' + ${listaUsuarios.userLastName}" th:field="*{user_userId}"></option>
+                        <select name="id_workers" id="id_workers" class="form-control" aria-describedby="addon-wrapping">
+                          <option name="id_workers" th:each="empleado:${empleados}" th:value="${empleado.idWorkers}" th:text="${empleado.workerName} + ' ' + ${empleado.workerLastName}" th:field="*{id_workers}"></option>
                         </select>  
-                      </div>
+                      </div> 
 
-                      <div class="input-group flex-nowrap mb-3">
-                        <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Nombre médico</span>
-                        <select name="doctors_idDoctor" id="doctors_idDoctor" class="form-control" aria-describedby="addon-wrapping">
-                          <option name="doctors_idDoctor" th:each="listadoMedicos:${listaMedicos}" th:value="${listadoMedicos.idDoctor}" th:text="${listadoMedicos.nombreMedico}" th:field="*{doctors_idDoctor}"></option>
-                        </select>
-                      </div>
-
-                      <div class="input-group flex-nowrap mb-3">
-                        <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Fecha</span>
-                        <input id="startDate" class="form-control" type="date" name="medical_appointment_date" th:field="*{medical_appointment_date}"/>
-                      </div>
                       <div class="input-group flex-nowrap mb-3">
                         <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Especialidad</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="" value="General" disabled/>                        
+                        <input id="area" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="area" th:value="General" th:field="*{area}" placeholder="General" disabled/>                        
                       </div>
-                      <div class="input-group flex-nowrap mb-3">
-                        <span class="input-group-text bg-verdeClaro-main text-white" id="inputGroup-sizing-default">Observaciones</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="addon-wrapping" name="observations"  th:field="*{observations}"/>
-                      </div>                                                 
+                                                                      
                       <div class="d-flex p-5 mt-3 ms-3">
-                        <button  type="submit" class=" align-self-center btn btn-success bg-verdeClaro-main ms-5">Agendar <i class="bi bi-calendar2-check"></i></button>
+                        <button  type="submit" class=" align-self-center btn btn-success bg-verdeClaro-main ms-5">Agregar médico <i class="bi bi-lock"></i></button>
                       </div>
                     </form>                    
                   </div>         

@@ -6,23 +6,28 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import co.edu.uis.dto.DoctorDto;
 import co.edu.uis.interfaceService.IempleadoService;
 import co.edu.uis.models.Empleado;
+import co.edu.uis.services.DoctorServiceImpl;
 
+@Secured("ROLE_ADMIN")
 @Controller
 @RequestMapping("/managerEmpleados")
 public class ContraladorEmpleado {
 
 	@Autowired
 	private IempleadoService service;
-	
+		
 	@GetMapping("/listarEmpleados")
 	public String listar(Model model) {
 		List<Empleado>empleados=service.listar();
@@ -35,7 +40,7 @@ public class ContraladorEmpleado {
 		model.addAttribute("empleado", new Empleado());
 		return "GestionEmpleadosInputs";
 	}
-	
+		
 	@PostMapping("/saveEmpleado")
 	public String save(@Valid Empleado e, Model model) {
 		service.Save(e);

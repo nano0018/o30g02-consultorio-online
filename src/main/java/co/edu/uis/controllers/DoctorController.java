@@ -27,7 +27,7 @@ import co.edu.uis.services.UsuarioService;
 public class DoctorController {
 	
 	@Autowired
-	DoctorServiceImpl doctorServiceImpl;
+	private DoctorServiceImpl doctorServiceImpl;
 	
 	@Autowired
 	private CitaMedicaServiceImpl citaMedicaServiceImpl;
