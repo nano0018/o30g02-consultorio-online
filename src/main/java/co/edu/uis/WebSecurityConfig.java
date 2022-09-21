@@ -15,11 +15,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import co.edu.uis.services.CustomUserDetailsService;
 import co.edu.uis.util.loginSuccessMessage;
 
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -46,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
     }
+    
 
     @Bean
     public UserDetailsService userDetailsService() {
