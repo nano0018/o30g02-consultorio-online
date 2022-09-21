@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/home-styles.css">
+    <link rel="stylesheet" href="/css/home-styles.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>        
         
 		<title>Grupo O30</title>	
 	</head>
@@ -21,15 +21,17 @@
               <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active fs-5" aria-current="page" href="#">Inicio <i class="bi bi-house"></i></a>
+                    <a th:href="@{/dashboard}" class="nav-link active fs-5" aria-current="page" href="#">Inicio <i class="bi bi-house"></i></a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario <i class="bi bi-person-circle"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end">
                       <li><a class="dropdown-item fs-5" href="#">Perfil</a></li>
-                      <li><form action="">
-                        <button class="dropdown-item fs-5" type="submit">Cerrar sesión</button>
-                      </form></li>
+                      <li>
+                        <form th:action="@{/logout}" method="post">                          
+                          <button class="dropdown-item fs-5" type="submit" value="logout">Cerrar sesión</button>
+                        </form>                                         
+                    </li>
                     </ul>
                   </li>
                 </ul>
@@ -43,14 +45,17 @@
                         <a href="" class="d-flex align-items-center pb-2 mb-md-0 me-md-auto text-white text-decoration-none">
                             <span class="fs-5 d-none d-sm-inline">Menu</span>
                         </a>
-                        <a href="" class="p-2 fs-5 nav-link px-0 align-middle"><i class="bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar usuarios</span></a>
-                        <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-badge-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar empleados</span></a>
-                        <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-calendar-week"></i><span class="ms-1 d-none d-sm-inline">Gestionar citas</span></a>
+                        <a href="" sec:authorize="hasAnyRole('ADMIN', 'DOCTOR')" class="p-2 fs-5 nav-link px-0 align-middle"><i class="bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar usuarios</span></a>
+                        <a href="" sec:authorize="hasRole('ADMIN')" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-badge-fill"></i><span class="ms-1 d-none d-sm-inline">Gestionar empleados</span></a>
+                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/administacion_citas_medicas}" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-calendar-week"></i><span class="ms-1 d-none d-sm-inline">Gestionar citas</span></a>
+                        <a sec:authorize="hasRole('USER')" th:href="@{/cita_medica}" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-calendar-week"></i><span class="ms-1 d-none d-sm-inline">Gestionar citas</span></a>
+                        <a sec:authorize="hasRole('DOCTOR')" th:href="@{/doctor}" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-calendar-event"></i><span class="ms-1 d-none d-sm-inline">Gestionar citas propias</span></a>
                         <a href="" class="p-2 fs-5 nav-link px-0 align-middle a-ref-menu"><i class="bi bi-person-lines-fill"></i><span class="ms-1 d-none d-sm-inline">Editar perfil</span></a>
                     </div>
                 </div>
-                <div class="col py-3">
-                    Content area...
+                <div class="col py-3 animate__animated animate__fadeInLeft">
+                    <h3><i class="bi bi-person-workspace"></i> Bienvenido usuario ID: <span sec:authentication="name"> </span></h3>
+                    <h4>Sistema de gestión de citas -  MinTIC Grupo: O30 - 02</h4>
                 </div>
             </div>
         </div>

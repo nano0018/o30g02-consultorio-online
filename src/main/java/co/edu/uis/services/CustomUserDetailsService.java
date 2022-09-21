@@ -56,8 +56,9 @@ public class CustomUserDetailsService implements UserDetailsService{
         public CustomUserDetails(int username, String password, String role) {
             this.username = username;
             this.password = password;
+            String ROLE_PREFIX = "ROLE_";
             List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-            grantedAuthorities.add(new SimpleGrantedAuthority(role));
+            grantedAuthorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + role));
             this.authorities = grantedAuthorities;
         }
 

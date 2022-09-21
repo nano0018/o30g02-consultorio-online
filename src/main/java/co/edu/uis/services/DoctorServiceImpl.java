@@ -54,4 +54,10 @@ public class DoctorServiceImpl implements IDoctorService {
 		return doctorRepository.listarMedicosById(id);
 	}
 
+	@Override
+	public Integer MedicoByIdWorker(Integer id) {
+		// TODO Auto-generated method stub
+		return doctorRepository.MedicoByIdWorker(id);
+	}
+
 }
