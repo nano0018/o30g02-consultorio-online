@@ -39,6 +39,18 @@ public class controlador {
 		return "GestionUsuariosInputs";
 	}
 	
+//	@GetMapping("/register")
+//	public String agr(Model model) {
+//		model.addAttribute("usuario", new Usuario());
+//		return "Register";
+//	}
+//	
+//	@PostMapping("/saveRegister")
+//	public String sv(@Valid Usuario u, Model model) {
+//		service.save(u);
+//		return "redirect:/login";
+//	}
+	
 	@PostMapping("/save")
 	public String save(@Valid Usuario u, Model model) {
 		service.save(u);

@@ -6,7 +6,7 @@
     <title>Bootstrap demo</title>
     <link
       rel="stylesheet"
-      href="register.css"
+      href="/css/register.css"
     />
     <link
       rel="stylesheet"
@@ -20,40 +20,45 @@
     />
   </head>
 
-  <body class=" bg-verdeOscuro-main">
+  <body class="">
 
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">TuSalud</a>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Novedades</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Acerca de</a>
-            </li>
-          </ul>
-          <div class="d-flex">
-            <button class="btn btn-outline-success" type="submit">Registrarse</button>
-            <button class="btn btn-outline-success ms-3" type="submit">Inicar sesión</button>
+     <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-verdeOscuro-main sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-5" th:href="@{/home}">MisiónTIC 2022 - Consultorio Online</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active fs-5" aria-current="page" th:href="@{/login}">Iniciar sesión </i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active fs-5" aria-current="page" th:href="@{/reg/register}">Registro</i></a>
+              </li>
+              
+<!--               <li class="nav-item dropdown"> -->
+<!--                 <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario <i class="bi bi-person-circle"></i></a> -->
+<!--                 <ul class="dropdown-menu dropdown-menu-end"> -->
+<!--                   <li><a class="dropdown-item fs-5" href="#">Perfil</a></li> -->
+<!--                   <li><form action=""> -->
+<!--                     <button class="dropdown-item fs-5" type="submit">Cerrar sesión</button> -->
+<!--                   </form></li> -->
+<!--                 </ul> -->
+<!--               </li> -->
+            </ul>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <!-- Navbar -->
 
-    <div class=" main-container container-md d-flex aling-items-center justify-content-center animate__animated animate__fadeInDown">
+    <div class=" main-container container-md animate__animated animate__fadeInDown">
 
-      <div class="d-flex flex-column m-3 ">
-        <h1 class="text-white">Bienvenido Registrate</h1>
+      <div class="d-flex flex-column m-3 d-flex align-items-center justify-content-center">
+        <h1 class="text-black mb-3">Bienvenido Registrate</h1>
   
-        <form class="form-group" th:action="@{/save}" th:object=${usuario} method="POST">
+        <form class="form-group col-6 shadow-lg p-3 mb-5 bg-body rounded" th:action="@{/reg/saveRegister}" th:object=${usuario} method="POST">
   
           <div class="input-group mt-3 mb-3">
             <span class="input-group-text">Nombres & Apellidos</span>
@@ -112,31 +117,31 @@
             
           </div>
   
-          <div id="passwordHelpBlock" class="form-text">
+          <div id="passwordHelpBlock" class="form-text flex-column d-flex align-self-center">
             Su contraseña debe tener entre 8 a 45 caracteres, puede contener letras y número, no debe incluir espacios en blanco, caracteres especiales o emojis
+            <input  type="submit" value="Guardar" class="btn btn-success bg-verdeClaro-main d-flex align-self-center mt-3" />
           </div>
           
-          <input  type="submit" value="Guardar" class="btn btn-primary d-flex align-self-center mt-3" />
         </form>
-        
-        
+         
       </div>
   
-      <div class="mt-5">
-        <img class="img_main" src="./src/img/undraw_join_re_w1lh.svg" alt="registrate">
-      </div>
+<!--       <div class="mt-5"> -->
+<!--         <img class="img_main" src="./src/img/undraw_join_re_w1lh.svg" alt="registrate"> -->
+<!--       </div> -->
   
       
     </div>
     
-	<footer class="main-footer bg-light text-center text-lg-start">
-	    <!-- Copyright -->
-	    <div class="text-center p-3">
-	      © 2020 Copyright:
-	      <a class="text-dark" href="https://mdbootstrap.com/">Tusalud.com</a>
-	    </div>
-	    <!-- Copyright -->
-	</footer>
+	<!-- pie de pagina -->
+    <footer class="main-footer bg-verdeOscuro-main text-center text-lg-start sticky-bottom">
+      <!-- Copyright -->
+      <div class="text-center text-white p-3">
+        © 2020 Copyright:
+        <a class="text-white text-decoration-none" href="">Consultorio Online</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

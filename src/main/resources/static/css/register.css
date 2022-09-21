@@ -17,9 +17,9 @@
 }
 
 .main-footer {
-	position: absolute;
-	bottom:0;
-	width: 100%
+	position: absolute !important;
+	bottom:0 !important;
+	width: 100% !important;
 }
 
 @media (max-width: 900px) {

@@ -20,6 +20,14 @@
     background-color: #A5A5AF !important;
 }
 
+.main-footer {
+	position: absolute !important;
+	bottom:0 !important;
+	width: 100% !important;
+}
+body {
+	height: 100vh;
+}
 @media (max-width: 750px) {
     /*  .img_main {
        display: none;

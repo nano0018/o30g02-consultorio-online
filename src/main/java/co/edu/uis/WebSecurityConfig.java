@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/index","/home","/","/css/**","/js/**","/images/**","/loginTest").permitAll()
+                .antMatchers("/index","/home","/","/css/**","/js/**","/images/**","/reg/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/cita_medica", true)

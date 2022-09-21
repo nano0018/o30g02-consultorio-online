@@ -29,24 +29,28 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-verdeOscuro-main sticky-top">
         <div class="container-fluid">
-          <a class="navbar-brand fs-5" href="#">MisiónTIC 2022 - Consultorio Online</a>
+          <a class="navbar-brand fs-5" th:href="@{/home}">MisiónTIC 2022 - Consultorio Online</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active fs-5" aria-current="page" href="#">Inicio <i class="bi bi-house"></i></a>
+                <a class="nav-link active fs-5" aria-current="page" th:href="@{/login}">Iniciar sesión </i></a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario <i class="bi bi-person-circle"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item fs-5" href="#">Perfil</a></li>
-                  <li><form action="">
-                    <button class="dropdown-item fs-5" type="submit">Cerrar sesión</button>
-                  </form></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link active fs-5" aria-current="page" th:href="@{/reg/register}">Registro</i></a>
               </li>
+              
+<!--               <li class="nav-item dropdown"> -->
+<!--                 <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario <i class="bi bi-person-circle"></i></a> -->
+<!--                 <ul class="dropdown-menu dropdown-menu-end"> -->
+<!--                   <li><a class="dropdown-item fs-5" href="#">Perfil</a></li> -->
+<!--                   <li><form action=""> -->
+<!--                     <button class="dropdown-item fs-5" type="submit">Cerrar sesión</button> -->
+<!--                   </form></li> -->
+<!--                 </ul> -->
+<!--               </li> -->
             </ul>
           </div>
         </div>
@@ -125,12 +129,12 @@
       <!-- Background image -->
     </header>
 
-    <section class="container d-flex main-section mb-5 ">
+    <section class="container d-flex main-section mb-5 flex-row">
         <!-- card item along -->
         <div class="card main-card">
             <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
               <img
-                src="./assets/img/tindividual.jfif"
+                src="https://lamenteesmaravillosa.com/wp-content/uploads/2017/10/psicologo-con-paciente-e1508925446843.jpg"
                 class="img-fluid"
               />
               <a href="#!">
@@ -151,7 +155,7 @@
         <div class="card main-card">
             <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
               <img
-                src="./assets/img/tfamiliar.jfif"
+                src="https://www.topdoctors.com.co/files/Image/large/5b68a891-d784-4b2b-9fc6-4cdd8e2cd470.jpg"
                 class="img-fluid"
               />
               <a href="#!">
@@ -193,7 +197,7 @@
         <div class="card main-card">
             <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
               <img
-                src="./assets/img/tinfantil.jfif"
+                src="https://www.queestudiar.org/wp-content/uploads/2017/10/pediatra.jpeg"
                 class="img-fluid"
               />
               <a href="#!">
