@@ -27,28 +27,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private loginSuccessMessage successMessage;
-    
-    
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/index","/home","/","/css/**","/js/**","/images/**","/reg/**").permitAll()
+                .antMatchers("/index", "/home", "/", "/css/**", "/js/**", "/images/**", "/reg/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/dashboard", true)
                 .permitAll()
                 .and()
-                .logout().clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")) 
-                .logoutSuccessUrl("/") 
+                .logout().clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
     }
-    
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
     }
-    
+
 
     @Bean
     public UserDetailsService userDetailsService() {
