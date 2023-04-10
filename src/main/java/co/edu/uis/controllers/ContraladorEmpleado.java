@@ -3,8 +3,6 @@ package co.edu.uis.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -13,12 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import co.edu.uis.dto.DoctorDto;
+
 import co.edu.uis.interfaceService.IempleadoService;
 import co.edu.uis.models.Empleado;
-import co.edu.uis.services.DoctorServiceImpl;
+
 
 @Secured("ROLE_ADMIN")
 @Controller
@@ -42,7 +39,7 @@ public class ContraladorEmpleado {
 	}
 		
 	@PostMapping("/saveEmpleado")
-	public String save(@Valid Empleado e, Model model) {
+	public String save( Empleado e, Model model) {
 		service.Save(e);
 		return "redirect:/managerEmpleados/listarEmpleados";
 	}

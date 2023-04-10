@@ -1,7 +1,5 @@
 package co.edu.uis.controllers;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -28,7 +26,7 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/saveRegister")
-	public String sv(@Valid Usuario u, Model model) {
+	public String sv( Usuario u, Model model) {
 		service.save(u);
 		return "redirect:/login";
 	}

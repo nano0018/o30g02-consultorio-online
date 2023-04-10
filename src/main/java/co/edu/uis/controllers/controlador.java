@@ -3,8 +3,6 @@ package co.edu.uis.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -53,7 +51,7 @@ public class controlador {
 //	}
 	
 	@PostMapping("/save")
-	public String save(@Valid Usuario u, Model model) {
+	public String save( Usuario u, Model model) {
 		service.save(u);
 		return "redirect:/managerUsuarios/listar";
 	}
